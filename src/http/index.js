@@ -2,7 +2,7 @@ import axios from 'axios'
 import api from './api'
 
 let instance = axios.create({
-    baseURL: 'http://localhost:8090/irblapp-ZERO',
+    baseURL: 'http://172.19.130.201:8090/irblapp-ZERO',
     // baseURL: 'http://localhost:8090',
     timeout: 50000
 })

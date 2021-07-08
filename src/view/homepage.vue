@@ -18,7 +18,7 @@
           >
           </a-input>
           <a-upload
-              action="http://localhost:8090/data/upload"
+              action="http://172.19.130.201:8090/irblapp-ZERO/data/upload"
 
               name="files"
           >
@@ -52,7 +52,7 @@
             style="margin-top: 100px"
         >
           <a-upload
-              action="http://localhost:8090/data/query"
+              action="http://172.19.130.201:8090/irblapp-ZERO/data/query"
               name="report"
               :multiple=true
           >
@@ -109,7 +109,7 @@
             title="详情"
             width="1000px"
         >
-          <a-descriptions bordered v-bind:title="activeReportId">
+          <a-descriptions bordered v-bind:title="activeReportId" style="white-space: pre-line;">
             <a-descriptions-item label="描述">{{ activeDescription }}</a-descriptions-item>
             <a-descriptions-item label="总结">{{ activeSummary }}</a-descriptions-item>
             <a-descriptions-item label="提交者">{{ activeReporter }}</a-descriptions-item>
@@ -261,9 +261,10 @@ export default {
           let targetFiles = ""
           for (let i = 0;i<this.rawData.length;i++) {
             if (this.rawData[i]["report_id"] === this.activeReportId) {
-              for (let i = 0; i < 10 && i < this.rawData[i]["score_list"].length ; i++) {
-                targetFiles += "file: " + this.rawData[i]["score_list"][i]["code_name"] + "  "
-                targetFiles += "score: " + this.rawData[i]["score_list"][i]["score"] + "  "
+              console.log(this.rawData[i])
+              for (let j = 0; j < 10 && j < this.rawData[j]["score_list"].length ; j++) {
+                targetFiles += this.rawData[i]["score_list"][j]["code_name"] + " ---- "
+                targetFiles += this.rawData[i]["score_list"][j]["score"] + "\n"
               }
             }
           }
